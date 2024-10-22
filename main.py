@@ -15,6 +15,7 @@ import argparse
 from config import all_args
 from modules.metrics import compute_metrics_together
 from modules.tokenization_clip import SimpleTokenizer as ClipTokenizer
+import modules.init_func as init_func
 
 
 
@@ -26,10 +27,11 @@ def main():
     # basic preparation
     global logger
     args = all_args.get_args()
-    args, logger = all.args.set_seed_logger(args)
+    args, logger = all_args.set_seed_logger(args)
+    
     tokenizer = ClipTokenizer()
-
-
+    device, n_gpu = init_func.init_device(args, args.local_rank)
+    model = init_func.init_model(args, device)
 
 if __name__ == "__main__":
     main()
