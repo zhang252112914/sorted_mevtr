@@ -5,7 +5,7 @@ from __future__ import print_function
 import torch
 from torch import nn
 
-from modules.until_module import PreTrainedModel
+from modules.util_module import PreTrainedModel
 
 class MeRetrieverPretrained(PreTrainedModel, nn.Module):
     def __init__(self, cross_config, *inputs, **kwargs):
