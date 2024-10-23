@@ -5,6 +5,7 @@ import numpy as np
 import pickle
 import random
 import torch
+import logging
 
 from model.meretriever import MeRetriever
 from modules.util_file import PYTORCH_PRETRAINED_BERT_CACHE
@@ -97,3 +98,18 @@ def prep_optimizer(args, model, num_train_optimization_steps, device, n_gpu, loc
                                                       output_device=local_rank, find_unused_parameters=True)
     # model = apex.parallel.DistributedDataParallel(model)
     return optimizer, scheduler, model
+
+def show_log(task_config, info, logger):
+    if task_config is None or task_config.local_rank == 0:
+        logger.warning(info)
+
+def update_attr(target_name, target_config, target_attr_name, source_config, source_attr_name, default_value=None):
+    if hasattr(source_config, source_attr_name):
+        if default_value is None or getattr(source_config, source_attr_name) != default_value:
+            setattr(target_config, target_attr_name, getattr(source_config, source_attr_name))
+            show_log(source_config, "Set {}.{}: {}.".format(target_name,
+                                                            target_attr_name, getattr(target_config, target_attr_name)))
+    return target_config
+
+def check_attr(target_name, task_config):
+    return hasattr(task_config, target_name) and task_config.__dict__[target_name]

@@ -4,8 +4,14 @@ from __future__ import print_function
 
 import torch
 from torch import nn
+import logging
 
+from modules.module_clip import CLIP, convert_weights
+from modules.module_cross import CrossModel, CrossConfig, Transformer as TransformerClip
 from modules.util_module import PreTrainedModel
+from modules.util_func import show_log
+
+logger = logging.getLogger(__name__)
 
 class MeRetrieverPretrained(PreTrainedModel, nn.Module):
     def __init__(self, cross_config, *inputs, **kwargs):
@@ -16,6 +22,7 @@ class MeRetrieverPretrained(PreTrainedModel, nn.Module):
 
     @classmethod
     def from_pretrained(cls, cross_model_name, state_dict=None, cache_dir=None, type_vocab_size=2, *inputs, **kwargs):
+        # the task_config is passed in everytime the model is initialized, and it's actually "args" itself
         task_config = None
         if "task_config" in kwargs.keys():
             task_config = kwargs["task_config"]
