@@ -3,7 +3,7 @@ import numpy as np
 
 from modules.util_func import parallel_apply_2
 from modules.metrics import compute_metrics_together
-from modules.util_func import batch_fast_kmedoids
+from modules.cluster.fast_kmeans import batch_fast_kmedoids
 
 def eval_epoch(args, model, test_dataloader, device, n_gpu, logger):
     if hasattr(model, 'module'):

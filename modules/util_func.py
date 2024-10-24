@@ -7,25 +7,25 @@ import random
 import torch
 import logging
 
-from model.meretriever import MeRetriever
+
 from modules.util_file import PYTORCH_PRETRAINED_BERT_CACHE
 from modules.optimization import BertAdam
 
-def init_model(args, device):
+def init_model(args, device, logger):
     if args.init_model:
         model_state_dict = torch.load(args.init_model, map_location='cpu')
     else:
         model_state_dict = None
     # Prepare model
     cache_dir = args.cache_dir if args.cache_dir else os.path.join(str(PYTORCH_PRETRAINED_BERT_CACHE), 'distributed')
-    model = MeRetriever.from_pretrained(args.cross_model, cache_dir=cache_dir, state_dict=model_state_dict,
+    from model.meretriever import MeRetriever
+    model = MeRetriever.from_pretrained(args.cross_model, logger=logger,cache_dir=cache_dir, state_dict=model_state_dict,
                                         task_config=args)
     model.to(device)
     return model
 
 
-def init_device(args):
-    logger = args.logger
+def init_device(args, logger):
     local_rank = args.local_rank
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu", local_rank)
@@ -65,7 +65,6 @@ def prep_optimizer(args, model, num_train_optimization_steps, device, n_gpu, loc
     if hasattr(model, 'module'):
         model = model.module
 
-    local_rank = args.local_rank
     coef_lr = args.coef_lr
     
     param_optimizer = list(model.named_parameters())
@@ -103,13 +102,56 @@ def show_log(task_config, info, logger):
     if task_config is None or task_config.local_rank == 0:
         logger.warning(info)
 
-def update_attr(target_name, target_config, target_attr_name, source_config, source_attr_name, default_value=None):
+def update_attr(target_name, target_config, target_attr_name, source_config, source_attr_name, logger,default_value=None):
     if hasattr(source_config, source_attr_name):
         if default_value is None or getattr(source_config, source_attr_name) != default_value:
             setattr(target_config, target_attr_name, getattr(source_config, source_attr_name))
             show_log(source_config, "Set {}.{}: {}.".format(target_name,
-                                                            target_attr_name, getattr(target_config, target_attr_name)))
+                                                            target_attr_name, getattr(target_config, target_attr_name)), self.logger)
     return target_config
 
 def check_attr(target_name, task_config):
     return hasattr(task_config, target_name) and task_config.__dict__[target_name]
+
+def parallel_apply_2(fct, model, inputs, device_ids):
+    modules = nn.parallel.replicate(model, device_ids)
+    assert len(modules) == len(inputs)
+    lock = threading.Lock()
+    results = {}
+    grad_enabled = torch.is_grad_enabled()
+
+    def _worker(i, module, input):
+        torch.set_grad_enabled(grad_enabled)
+        device = get_a_var(input).get_device()
+        try:
+            with torch.cuda.device(device):
+                # this also avoids accidental slicing of `input` if it is a Tensor
+                if not isinstance(input, (list, tuple)):
+                    input = (input,)
+                output = fct(module, *input)
+            with lock:
+                results[i] = output
+        except Exception:
+            with lock:
+                results[i] = ExceptionWrapper(where="in replica {} on device {}".format(i, device))
+
+    if len(modules) > 1:
+        threads = [threading.Thread(target=_worker, args=(i, module, input))
+                   for i, (module, input) in enumerate(zip(modules, inputs))]
+
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+    else:
+        _worker(0, modules[0], inputs[0])
+
+    outputs, masks = [], []
+    for i in range(len(inputs)):
+        output = results[i]
+        if isinstance(output, ExceptionWrapper):
+            output.reraise()
+        o1, o2 = output
+        outputs.append(o1)
+        masks.append(o2)
+    return outputs, masks

@@ -15,24 +15,25 @@ from modules.util_module import all_gather_only as allgather
 
 logger = logging.getLogger(__name__)
 
-class MeRetriever:
-    def __init__(self, cross_config, clip_state_dict, task_config):
+class MeRetriever(MeRetrieverPretrained):
+    def __init__(self, cross_config, clip_state_dict, task_config, logger):
         super(MeRetriever, self).__init__(cross_config)
         # the task_config actually is the args from script
         self.task_config = task_config
         self.ignore_video_index = -1
+        self.logger = logger
 
         # assert self.task_config.max_words + self.task_config.max_frames <= cross_config.max_position_embeddings
 
         self._stage_one = True
         self._stage_two = False
 
-        show_log(task_config, "Stage-One:{}, Stage-Two:{}".format(self._stage_one, self._stage_two))
+        show_log(task_config, "Stage-One:{}, Stage-Two:{}".format(self._stage_one, self._stage_two), self.logger)
 
         self.loose_type = False
         if self._stage_one and check_attr('loose_type', self.task_config):
             self.loose_type = True
-            show_log(task_config, "Test retrieval by loose type.")
+            show_log(task_config, "Test retrieval by loose type.", self.logger)
 
         # CLIP Encoders: From OpenAI: CLIP [https://github.com/openai/CLIP] ===>
         vit = "visual.proj" in clip_state_dict
@@ -76,25 +77,25 @@ class MeRetriever:
             self.pre_visual_pooling = getattr(task_config, "pre_visual_pooling", 0)
             self.camoe_dsl = getattr(task_config, "camoe_dsl", False)
 
-        show_log(task_config, "\t embed_dim: {}".format(embed_dim))
-        show_log(task_config, "\t image_resolution: {}".format(image_resolution))
-        show_log(task_config, "\t vision_layers: {}".format(vision_layers))
-        show_log(task_config, "\t vision_width: {}".format(vision_width))
-        show_log(task_config, "\t vision_patch_size: {}".format(vision_patch_size))
-        show_log(task_config, "\t context_length: {}".format(context_length))
-        show_log(task_config, "\t vocab_size: {}".format(vocab_size))
-        show_log(task_config, "\t transformer_width: {}".format(transformer_width))
-        show_log(task_config, "\t transformer_heads: {}".format(transformer_heads))
-        show_log(task_config, "\t transformer_layers: {}".format(transformer_layers))
+        show_log(task_config, "\t embed_dim: {}".format(embed_dim), self.logger)
+        show_log(task_config, "\t image_resolution: {}".format(image_resolution), self.logger)
+        show_log(task_config, "\t vision_layers: {}".format(vision_layers), self.logger)
+        show_log(task_config, "\t vision_width: {}".format(vision_width), self.logger)
+        show_log(task_config, "\t vision_patch_size: {}".format(vision_patch_size), self.logger)
+        show_log(task_config, "\t context_length: {}".format(context_length), self.logger)
+        show_log(task_config, "\t vocab_size: {}".format(vocab_size), self.logger)
+        show_log(task_config, "\t transformer_width: {}".format(transformer_width), self.logger)
+        show_log(task_config, "\t transformer_heads: {}".format(transformer_heads), self.logger)
+        show_log(task_config, "\t transformer_layers: {}".format(transformer_layers), self.logger)
 
         self.linear_patch = '2d'
         if hasattr(task_config, "linear_patch"):
             self.linear_patch = task_config.linear_patch
-            show_log(task_config, "\t\t linear_patch: {}".format(self.linear_patch))
+            show_log(task_config, "\t\t linear_patch: {}".format(self.linear_patch), self.logger)
 
         # use .float() to avoid overflow/underflow from fp16 weight. https://github.com/openai/CLIP/issues/40
         cut_top_layer = 0
-        show_log(task_config, "\t cut_top_layer: {}".format(cut_top_layer))
+        show_log(task_config, "\t cut_top_layer: {}".format(cut_top_layer), self.logger)
 
         self.clip = CLIP(
             embed_dim,
@@ -113,7 +114,7 @@ class MeRetriever:
         self.sim_header = 'meanP'
         if hasattr(task_config, "sim_header"):
             self.sim_header = task_config.sim_header
-            show_log(task_config, "\t sim_header: {}".format(self.sim_header))
+            show_log(task_config, "\t sim_header: {}".format(self.sim_header), self.logger)
         if self.sim_header == "tightTransf": assert self.loose_type is False
 
         cross_config.max_position_embeddings = context_length
@@ -122,7 +123,7 @@ class MeRetriever:
         if self.loose_type is False:
             # Cross Encoder ===>
             cross_config = update_attr("cross_config", cross_config, "num_hidden_layers", self.task_config,
-                                       "cross_num_hidden_layers")
+                                       "cross_num_hidden_layers", self.logger)
             self.cross = CrossModel(cross_config)
             # <=== End of Cross Encoder
             self.similarity_dense = nn.Linear(cross_config.hidden_size, 1)

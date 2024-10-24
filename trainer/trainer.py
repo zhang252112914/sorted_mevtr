@@ -25,7 +25,7 @@ class Trainer(BaseTrainer):
         self.global_step = global_step
 
     def train(self):
-        for epoch in range(self.resumed_epoch, self.epochs):
+        for epoch in range(self.resumed_epoch, self.args.epochs):
             self.train_sampler.set_epoch(epoch)
             tr_loss, global_step = self.train_epoch(epoch)
             if self.args.local_rank == 0:

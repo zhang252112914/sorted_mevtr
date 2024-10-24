@@ -9,7 +9,6 @@ import logging
 from modules.module_clip import CLIP, convert_weights
 from modules.module_cross import CrossModel, CrossConfig, Transformer as TransformerClip
 from modules.util_module import PreTrainedModel
-from modules.util_func import show_log
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +20,7 @@ class MeRetrieverPretrained(PreTrainedModel, nn.Module):
         self.cross = None
 
     @classmethod
-    def from_pretrained(cls, cross_model_name, state_dict=None, cache_dir=None, type_vocab_size=2, *inputs, **kwargs):
+    def from_pretrained(cls, cross_model_name, logger,state_dict=None, cache_dir=None, type_vocab_size=2, *inputs, **kwargs):
         # the task_config is passed in everytime the model is initialized, and it's actually "args" itself
         task_config = None
         if "task_config" in kwargs.keys():
@@ -47,7 +46,7 @@ class MeRetrieverPretrained(PreTrainedModel, nn.Module):
         cross_config, _ = CrossConfig.get_config(cross_model_name, cache_dir, type_vocab_size, state_dict=None,
                                                  task_config=task_config)
 
-        model = cls(cross_config, clip_state_dict, *inputs, **kwargs)
+        model = cls(cross_config, clip_state_dict, logger=logger,*inputs, **kwargs)
 
         ## ===> Initialization trick [HARD CODE]
         if model.linear_patch == "3d":

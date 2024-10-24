@@ -34,8 +34,8 @@ def main():
 
     # components
     tokenizer = ClipTokenizer()
-    device, n_gpu = util_func.init_device(args, args.local_rank)
-    model = util_func.init_model(args, device)
+    device, n_gpu = util_func.init_device(args, logger)
+    model = util_func.init_model(args, device, logger)
     model = util_func.freezze_test(model, args)
 
     # data
@@ -46,7 +46,7 @@ def main():
         # training_only preparation
         num_train_optimization_steps = (int(len(train_dataloader) + args.gradient_accumulation_steps - 1)
                                         / args.gradient_accumulation_steps) * args.epochs
-        optimizer, scheduler, model = util_func.prep_optimizer(args, model, num_train_optimization_steps, device, n_gpu)
+        optimizer, scheduler, model = util_func.prep_optimizer(args, model, num_train_optimization_steps, device, n_gpu, args.local_rank)
         if args.local_rank == 0:
             logger.info("***** Running training *****")
             logger.info("  Num examples = %d", train_length)
@@ -60,7 +60,7 @@ def main():
             resumed_epoch = checkpoint['epoch'] + 1
             resumed_loss = checkpoint['loss']
         global_step = 0
-        trainer = Trainer(args, logger, model, train_dataloader, device, n_gpu, 
+        trainer = Trainer(args, logger, model, train_dataloader, test_dataloader, device, n_gpu, 
                           optimizer, scheduler, global_step, resumed_epoch, train_sampler)
         trainer.train()
 
