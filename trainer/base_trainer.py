@@ -3,7 +3,8 @@ import os
 from abc import abstractmethod
 
 class BaseTrainer:
-    def __init__(self, args):
+    def __init__(self, args, resumed_epoch=0):
+        self.resumed_epoch = resumed_epoch
         self.do_pretrain = args.do_pretrain
         self.do_train = args.do_train
         self.do_eval = args.do_eval
@@ -83,3 +84,14 @@ class BaseTrainer:
     @abstractmethod
     def train_epoch(self, epoch):
         raise NotImplementedError
+    
+    @abstractmethod
+    def _valid_epoch_step(self, epoch, step, num_steps):
+        """
+        Training logic for a step in an epoch
+        :param epoch: Current epoch number
+               step: Current step in epoch
+               num_steps: Number of steps in epoch
+        """
+        raise NotImplementedError
+    

@@ -17,7 +17,8 @@ from modules.metrics import compute_metrics_together
 from modules.tokenization_clip import SimpleTokenizer as ClipTokenizer
 from dataloaders.data_factory import dataloader_factory
 import modules.util_func as util_func
-
+from trainer.trainer import Trainer
+from evaluation.evaluation import eval_epoch
 
 
 torch.distributed.init_process_group(backend="gloo", timeout=datetime.timedelta(seconds=86400))
@@ -51,8 +52,21 @@ def main():
             logger.info("  Num examples = %d", train_length)
             logger.info("  Batch size = %d", args.batch_size)
             logger.info("  Num steps = %d", num_train_optimization_steps * args.gradient_accumulation_steps)
+            
+        resumed_epoch = 0
+        if args.resume_model not in [None, 'None']:
+            checkpoint = torch.load(args.resume_model, map_location='cpu')
+            optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            resumed_epoch = checkpoint['epoch'] + 1
+            resumed_loss = checkpoint['loss']
+        global_step = 0
+        trainer = Trainer(args, logger, model, train_dataloader, device, n_gpu, 
+                          optimizer, scheduler, global_step, resumed_epoch, train_sampler)
+        trainer.train()
 
-
+    elif args.do_eval:
+        if args.local_rank == 0:
+            eval_epoch(args, model, test_dataloader, device, n_gpu, logger)
 
 if __name__ == "__main__":
     main()
