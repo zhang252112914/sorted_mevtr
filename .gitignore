@@ -1,3 +1,4 @@
 /modules/ViT-B-32.pt
 /output/
 /eval_output/
+__pycache__/
