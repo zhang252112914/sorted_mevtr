@@ -5,6 +5,39 @@ from modules.util_func import parallel_apply_2
 from modules.metrics import compute_metrics_together
 from modules.cluster.fast_kmeans import batch_fast_kmedoids
 
+def _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_list, batch_visual_output_list):
+    sim_matrix = []
+    sim_masks = []
+    for idx1, b1 in enumerate(batch_list_t):
+        input_mask, group_mask = b1
+        sequence_output, text_id = batch_sequence_output_list[idx1]
+        each_row = []
+        masks = []
+        for idx2, b2 in enumerate(batch_list_v):
+            video_mask, vt_mask = b2
+            visual_output = batch_visual_output_list[idx2]
+            if model.multi2multi:
+                b1b2_logits, sim_mask = model.get_similarity_sphere_eval(sequence_output, visual_output,
+                                                                        video_mask, group_mask, text_id, idx2)
+            else:
+                b1b2_logits, sim_mask = model.get_similarity_logits(sequence_output, visual_output, input_mask,
+                                                                    video_mask,
+                                                                    group_mask, loose_type=model.loose_type)
+                if text_id != idx2:
+                    sim_mask = torch.zeros_like(b1b2_logits)
+            b1b2_logits = b1b2_logits.cpu().detach().numpy()
+            sim_mask = sim_mask.cpu().detach().numpy()
+            if b1b2_logits.shape[0] != sim_mask.shape[0] or b1b2_logits.shape[1] != sim_mask.shape[1]:
+                print("ERROR: Shape inconsistency")
+                raise AssertionError
+            each_row.append(b1b2_logits)
+            masks.append(sim_mask)
+        each_row = np.concatenate(each_row, axis=-1)
+        masks = np.concatenate(masks, axis=-1)
+        sim_matrix.append(each_row)
+        sim_masks.append(masks)
+    return sim_matrix, sim_masks
+
 def eval_epoch(args, model, test_dataloader, device, n_gpu, logger):
     if hasattr(model, 'module'):
         model = model.module.to(device)
@@ -107,36 +140,3 @@ def eval_epoch(args, model, test_dataloader, device, n_gpu, logger):
     logger.info("Video to text:")
     for key in vt_metrics:
         logger.info("{}: {}".format(key, vt_metrics[key]))
-
-    def _run_on_single_gpu(model, batch_list_t, batch_list_v, batch_sequence_output_list, batch_visual_output_list):
-        sim_matrix = []
-        sim_masks = []
-        for idx1, b1 in enumerate(batch_list_t):
-            input_mask, group_mask = b1
-            sequence_output, text_id = batch_sequence_output_list[idx1]
-            each_row = []
-            masks = []
-            for idx2, b2 in enumerate(batch_list_v):
-                video_mask, vt_mask = b2
-                visual_output = batch_visual_output_list[idx2]
-                if model.multi2multi:
-                    b1b2_logits, sim_mask = model.get_similarity_sphere_eval(sequence_output, visual_output,
-                                                                            video_mask, group_mask, text_id, idx2)
-                else:
-                    b1b2_logits, sim_mask = model.get_similarity_logits(sequence_output, visual_output, input_mask,
-                                                                        video_mask,
-                                                                        group_mask, loose_type=model.loose_type)
-                    if text_id != idx2:
-                        sim_mask = torch.zeros_like(b1b2_logits)
-                b1b2_logits = b1b2_logits.cpu().detach().numpy()
-                sim_mask = sim_mask.cpu().detach().numpy()
-                if b1b2_logits.shape[0] != sim_mask.shape[0] or b1b2_logits.shape[1] != sim_mask.shape[1]:
-                    print("ERROR: Shape inconsistency")
-                    raise AssertionError
-                each_row.append(b1b2_logits)
-                masks.append(sim_mask)
-            each_row = np.concatenate(each_row, axis=-1)
-            masks = np.concatenate(masks, axis=-1)
-            sim_matrix.append(each_row)
-            sim_masks.append(masks)
-        return sim_matrix, sim_masks
