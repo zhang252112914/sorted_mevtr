@@ -8,7 +8,10 @@ import torch
 import logging
 import threading
 
-from torch import nn
+import torch.nn as nn
+from torch._utils import ExceptionWrapper
+import logging
+
 from modules.util_file import PYTORCH_PRETRAINED_BERT_CACHE
 from modules.optimization import BertAdam
 
@@ -61,6 +64,20 @@ def freezze_test(model, args):
     return model
 
 
+def get_a_var(obj):
+    if isinstance(obj, torch.Tensor):
+        return obj
+
+    if isinstance(obj, list) or isinstance(obj, tuple):
+        for result in map(get_a_var, obj):
+            if isinstance(result, torch.Tensor):
+                return result
+    if isinstance(obj, dict):
+        for result in map(get_a_var, obj.items()):
+            if isinstance(result, torch.Tensor):
+                return result
+    return None
+
 def prep_optimizer(args, model, num_train_optimization_steps, device, n_gpu, local_rank, coef_lr=1.):
     # the model passed in dosen't seems have module?
     if hasattr(model, 'module'):
@@ -108,7 +125,7 @@ def update_attr(target_name, target_config, target_attr_name, source_config, sou
         if default_value is None or getattr(source_config, source_attr_name) != default_value:
             setattr(target_config, target_attr_name, getattr(source_config, source_attr_name))
             show_log(source_config, "Set {}.{}: {}.".format(target_name,
-                                                            target_attr_name, getattr(target_config, target_attr_name)), self.logger)
+                                                            target_attr_name, getattr(target_config, target_attr_name)), logger)
     return target_config
 
 def check_attr(target_name, task_config):
