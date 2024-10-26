@@ -6,6 +6,7 @@ import pickle
 import random
 import torch
 import logging
+import threading
 
 from torch import nn
 from modules.util_file import PYTORCH_PRETRAINED_BERT_CACHE
