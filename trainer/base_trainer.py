@@ -85,13 +85,3 @@ class BaseTrainer:
     def train_epoch(self, epoch):
         raise NotImplementedError
     
-    @abstractmethod
-    def _valid_epoch_step(self, epoch, step, num_steps):
-        """
-        Training logic for a step in an epoch
-        :param epoch: Current epoch number
-               step: Current step in epoch
-               num_steps: Number of steps in epoch
-        """
-        raise NotImplementedError
-    
