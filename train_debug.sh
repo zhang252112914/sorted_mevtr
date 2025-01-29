@@ -1,10 +1,10 @@
-CUDA_VISIBLE_DEVICES=1,2,3,6 torchrun --nproc_per_node=4 \
+CUDA_VISIBLE_DEVICES=6,3,4,5 torchrun --nproc_per_node=4 \
 --master_port=54198 \
 main.py --do_train \
 --num_thread_reader=2 \
 --data_path /home/zyl/MeVTR_data_and_models/charades/annotation \
 --features_path /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3 \
---output_dir /home/zyl/sorted_mevtr/output \
+--output_dir /home/zyl/sorted_mevtr/output_debug \
 --max_words 77 --max_frames 64 --batch_size_val 16 \
 --datatype charades --feature_framerate 1 --coef_lr 1e-4 \
 --slice_framepos 2 \

@@ -1,0 +1,756 @@
+2024-11-23 06:50:56,058:INFO: Effective parameters:
+2024-11-23 06:50:56,058:INFO:   <<< adaptive_cls: 0
+2024-11-23 06:50:56,058:INFO:   <<< aggregation: None
+2024-11-23 06:50:56,058:INFO:   <<< alpha: 1.0
+2024-11-23 06:50:56,058:INFO:   <<< batch_size: 16
+2024-11-23 06:50:56,058:INFO:   <<< batch_size_val: 16
+2024-11-23 06:50:56,058:INFO:   <<< cache_dir: 
+2024-11-23 06:50:56,058:INFO:   <<< cluser_embed_from_clip: 1
+2024-11-23 06:50:56,058:INFO:   <<< cluster_algo: kmediods++
+2024-11-23 06:50:56,058:INFO:   <<< cluster_distance: euclidean
+2024-11-23 06:50:56,058:INFO:   <<< cluster_embedding: 0
+2024-11-23 06:50:56,058:INFO:   <<< cluster_frame_embedding: 0
+2024-11-23 06:50:56,058:INFO:   <<< cluster_iter_limit: 100
+2024-11-23 06:50:56,058:INFO:   <<< cluster_threshold: 1e-05
+2024-11-23 06:50:56,058:INFO:   <<< coef_lr: 0.0001
+2024-11-23 06:50:56,058:INFO:   <<< cross_model: cross-base
+2024-11-23 06:50:56,058:INFO:   <<< cross_num_hidden_layers: 4
+2024-11-23 06:50:56,059:INFO:   <<< data_path: /home/zyl/MeVTR_data_and_models/charades/annotation
+2024-11-23 06:50:56,059:INFO:   <<< datatype: charades
+2024-11-23 06:50:56,059:INFO:   <<< do_eval: False
+2024-11-23 06:50:56,059:INFO:   <<< do_lower_case: False
+2024-11-23 06:50:56,059:INFO:   <<< do_pretrain: False
+2024-11-23 06:50:56,059:INFO:   <<< do_train: True
+2024-11-23 06:50:56,059:INFO:   <<< dynamic_alpha: False
+2024-11-23 06:50:56,059:INFO:   <<< epochs: 20
+2024-11-23 06:50:56,059:INFO:   <<< eval_frame_order: 0
+2024-11-23 06:50:56,059:INFO:   <<< expand_msrvtt_sentences: False
+2024-11-23 06:50:56,059:INFO:   <<< feature_framerate: 1
+2024-11-23 06:50:56,059:INFO:   <<< features_path: /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3
+2024-11-23 06:50:56,059:INFO:   <<< fp16: False
+2024-11-23 06:50:56,059:INFO:   <<< fp16_opt_level: O1
+2024-11-23 06:50:56,059:INFO:   <<< freeze_layer_num: 0
+2024-11-23 06:50:56,059:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-23 06:50:56,059:INFO:   <<< hard_negative_rate: 0.5
+2024-11-23 06:50:56,059:INFO:   <<< init_model: None
+2024-11-23 06:50:56,060:INFO:   <<< linear_patch: 2d
+2024-11-23 06:50:56,060:INFO:   <<< local_rank: 0
+2024-11-23 06:50:56,060:INFO:   <<< loose_type: True
+2024-11-23 06:50:56,060:INFO:   <<< loss: balanced
+2024-11-23 06:50:56,060:INFO:   <<< lr: 0.0001
+2024-11-23 06:50:56,060:INFO:   <<< lr_decay: 0.9
+2024-11-23 06:50:56,060:INFO:   <<< margin: 0.1
+2024-11-23 06:50:56,060:INFO:   <<< max_frames: 64
+2024-11-23 06:50:56,060:INFO:   <<< max_words: 77
+2024-11-23 06:50:56,060:INFO:   <<< minkowski_norm_p: 2.0
+2024-11-23 06:50:56,060:INFO:   <<< n_display: 100
+2024-11-23 06:50:56,060:INFO:   <<< n_gpu: 1
+2024-11-23 06:50:56,060:INFO:   <<< n_pair: 1
+2024-11-23 06:50:56,060:INFO:   <<< negative_weighting: 1
+2024-11-23 06:50:56,060:INFO:   <<< num_thread_reader: 2
+2024-11-23 06:50:56,060:INFO:   <<< output_dir: /home/zyl/sorted_mevtr/output_debug
+2024-11-23 06:50:56,060:INFO:   <<< post_cluster_centroids: 16
+2024-11-23 06:50:56,061:INFO:   <<< post_process: cluster
+2024-11-23 06:50:56,061:INFO:   <<< pre_norm: 0
+2024-11-23 06:50:56,061:INFO:   <<< pretrained_clip_name: ViT-B/32
+2024-11-23 06:50:56,061:INFO:   <<< rank: 0
+2024-11-23 06:50:56,061:INFO:   <<< regularize: none
+2024-11-23 06:50:56,061:INFO:   <<< resume_model: None
+2024-11-23 06:50:56,061:INFO:   <<< sampled_use_mil: False
+2024-11-23 06:50:56,061:INFO:   <<< save_feature_path: None
+2024-11-23 06:50:56,061:INFO:   <<< seed: 42
+2024-11-23 06:50:56,061:INFO:   <<< sim_header: meanP
+2024-11-23 06:50:56,061:INFO:   <<< sim_lambda: 0.0
+2024-11-23 06:50:56,061:INFO:   <<< slice_framepos: 2
+2024-11-23 06:50:56,061:INFO:   <<< task_type: retrieval
+2024-11-23 06:50:56,061:INFO:   <<< temperature_new: 1.0
+2024-11-23 06:50:56,061:INFO:   <<< text_num_hidden_layers: 12
+2024-11-23 06:50:56,061:INFO:   <<< time_embedding: 0
+2024-11-23 06:50:56,061:INFO:   <<< train_csv: data/.train.csv
+2024-11-23 06:50:56,061:INFO:   <<< train_frame_order: 0
+2024-11-23 06:50:56,062:INFO:   <<< use_mil: False
+2024-11-23 06:50:56,062:INFO:   <<< val_csv: data/.val.csv
+2024-11-23 06:50:56,062:INFO:   <<< video_dim: 1024
+2024-11-23 06:50:56,062:INFO:   <<< visual_num_hidden_layers: 12
+2024-11-23 06:50:56,062:INFO:   <<< warmup_proportion: 0.1
+2024-11-23 06:50:56,062:INFO:   <<< world_size: 4
+2024-11-23 06:50:56,169:INFO: device: cuda:2 n_gpu: 4
+2024-11-23 06:50:56,189:INFO: device: cuda:3 n_gpu: 4
+2024-11-23 06:50:56,194:INFO: device: cuda:0 n_gpu: 4
+2024-11-23 06:50:56,195:INFO: device: cuda:1 n_gpu: 4
+2024-11-23 06:50:57,787:INFO: loading archive file /home/zyl/sorted_mevtr/modules/cross-base
+2024-11-23 06:50:57,792:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2024-11-23 06:50:57,792:INFO: Weight doesn't exsits. /home/zyl/sorted_mevtr/modules/cross-base/cross_pytorch_model.bin
+2024-11-23 06:50:57,792:WARNING: Stage-One:True, Stage-Two:False
+2024-11-23 06:50:57,792:WARNING: Test retrieval by loose type.
+2024-11-23 06:50:57,793:WARNING: 	 embed_dim: 512
+2024-11-23 06:50:57,793:WARNING: 	 image_resolution: 224
+2024-11-23 06:50:57,793:WARNING: 	 vision_layers: 12
+2024-11-23 06:50:57,793:WARNING: 	 vision_width: 768
+2024-11-23 06:50:57,793:WARNING: 	 vision_patch_size: 32
+2024-11-23 06:50:57,793:WARNING: 	 context_length: 77
+2024-11-23 06:50:57,793:WARNING: 	 vocab_size: 49408
+2024-11-23 06:50:57,793:WARNING: 	 transformer_width: 512
+2024-11-23 06:50:57,793:WARNING: 	 transformer_heads: 8
+2024-11-23 06:50:57,793:WARNING: 	 transformer_layers: 12
+2024-11-23 06:50:57,793:WARNING: 		 linear_patch: 2d
+2024-11-23 06:50:57,793:WARNING: 	 cut_top_layer: 0
+2024-11-23 06:51:00,566:WARNING: 	 sim_header: meanP
+2024-11-23 06:51:05,694:INFO: --------------------
+2024-11-23 06:51:05,694:INFO: Weights from pretrained model not used in MeRetriever: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2024-11-23 06:51:07,266:INFO: ***** Running test *****
+2024-11-23 06:51:07,267:INFO:   Num examples = 1334
+2024-11-23 06:51:07,267:INFO:   Batch size = 16
+2024-11-23 06:51:07,267:INFO:   Num steps = 334
+2024-11-23 06:51:07,267:INFO: ***** Running val *****
+2024-11-23 06:51:07,267:INFO:   Num examples = 1334
+2024-11-23 06:51:10,753:INFO: ***** Running training *****
+2024-11-23 06:51:10,753:INFO:   Num examples = 5338
+2024-11-23 06:51:10,753:INFO:   Batch size = 16
+2024-11-23 06:51:10,753:INFO:   Num steps = 6660
+2024-11-23 06:55:47,767:INFO: Effective parameters:
+2024-11-23 06:55:47,767:INFO:   <<< adaptive_cls: 0
+2024-11-23 06:55:47,767:INFO:   <<< aggregation: None
+2024-11-23 06:55:47,767:INFO:   <<< alpha: 1.0
+2024-11-23 06:55:47,767:INFO:   <<< batch_size: 16
+2024-11-23 06:55:47,767:INFO:   <<< batch_size_val: 16
+2024-11-23 06:55:47,767:INFO:   <<< cache_dir: 
+2024-11-23 06:55:47,767:INFO:   <<< cluser_embed_from_clip: 1
+2024-11-23 06:55:47,767:INFO:   <<< cluster_algo: kmediods++
+2024-11-23 06:55:47,767:INFO:   <<< cluster_distance: euclidean
+2024-11-23 06:55:47,767:INFO:   <<< cluster_embedding: 0
+2024-11-23 06:55:47,767:INFO:   <<< cluster_frame_embedding: 0
+2024-11-23 06:55:47,767:INFO:   <<< cluster_iter_limit: 100
+2024-11-23 06:55:47,767:INFO:   <<< cluster_threshold: 1e-05
+2024-11-23 06:55:47,767:INFO:   <<< coef_lr: 0.0001
+2024-11-23 06:55:47,767:INFO:   <<< cross_model: cross-base
+2024-11-23 06:55:47,767:INFO:   <<< cross_num_hidden_layers: 4
+2024-11-23 06:55:47,767:INFO:   <<< data_path: /home/zyl/MeVTR_data_and_models/charades/annotation
+2024-11-23 06:55:47,767:INFO:   <<< datatype: charades
+2024-11-23 06:55:47,768:INFO:   <<< do_eval: False
+2024-11-23 06:55:47,768:INFO:   <<< do_lower_case: False
+2024-11-23 06:55:47,768:INFO:   <<< do_pretrain: False
+2024-11-23 06:55:47,768:INFO:   <<< do_train: True
+2024-11-23 06:55:47,768:INFO:   <<< dynamic_alpha: False
+2024-11-23 06:55:47,768:INFO:   <<< epochs: 20
+2024-11-23 06:55:47,768:INFO:   <<< eval_frame_order: 0
+2024-11-23 06:55:47,768:INFO:   <<< expand_msrvtt_sentences: False
+2024-11-23 06:55:47,768:INFO:   <<< feature_framerate: 1
+2024-11-23 06:55:47,768:INFO:   <<< features_path: /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3
+2024-11-23 06:55:47,768:INFO:   <<< fp16: False
+2024-11-23 06:55:47,768:INFO:   <<< fp16_opt_level: O1
+2024-11-23 06:55:47,768:INFO:   <<< freeze_layer_num: 0
+2024-11-23 06:55:47,768:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-23 06:55:47,768:INFO:   <<< hard_negative_rate: 0.5
+2024-11-23 06:55:47,768:INFO:   <<< init_model: None
+2024-11-23 06:55:47,768:INFO:   <<< linear_patch: 2d
+2024-11-23 06:55:47,768:INFO:   <<< local_rank: 0
+2024-11-23 06:55:47,768:INFO:   <<< loose_type: True
+2024-11-23 06:55:47,768:INFO:   <<< loss: balanced
+2024-11-23 06:55:47,768:INFO:   <<< lr: 0.0001
+2024-11-23 06:55:47,768:INFO:   <<< lr_decay: 0.9
+2024-11-23 06:55:47,768:INFO:   <<< margin: 0.1
+2024-11-23 06:55:47,768:INFO:   <<< max_frames: 64
+2024-11-23 06:55:47,768:INFO:   <<< max_words: 77
+2024-11-23 06:55:47,768:INFO:   <<< minkowski_norm_p: 2.0
+2024-11-23 06:55:47,768:INFO:   <<< n_display: 100
+2024-11-23 06:55:47,768:INFO:   <<< n_gpu: 1
+2024-11-23 06:55:47,768:INFO:   <<< n_pair: 1
+2024-11-23 06:55:47,768:INFO:   <<< negative_weighting: 1
+2024-11-23 06:55:47,769:INFO:   <<< num_thread_reader: 2
+2024-11-23 06:55:47,769:INFO:   <<< output_dir: /home/zyl/sorted_mevtr/output_debug
+2024-11-23 06:55:47,769:INFO:   <<< post_cluster_centroids: 16
+2024-11-23 06:55:47,769:INFO:   <<< post_process: cluster
+2024-11-23 06:55:47,769:INFO:   <<< pre_norm: 0
+2024-11-23 06:55:47,769:INFO:   <<< pretrained_clip_name: ViT-B/32
+2024-11-23 06:55:47,769:INFO:   <<< rank: 0
+2024-11-23 06:55:47,769:INFO:   <<< regularize: none
+2024-11-23 06:55:47,769:INFO:   <<< resume_model: None
+2024-11-23 06:55:47,769:INFO:   <<< sampled_use_mil: False
+2024-11-23 06:55:47,769:INFO:   <<< save_feature_path: None
+2024-11-23 06:55:47,769:INFO:   <<< seed: 42
+2024-11-23 06:55:47,769:INFO:   <<< sim_header: meanP
+2024-11-23 06:55:47,769:INFO:   <<< sim_lambda: 0.0
+2024-11-23 06:55:47,769:INFO:   <<< slice_framepos: 2
+2024-11-23 06:55:47,769:INFO:   <<< task_type: retrieval
+2024-11-23 06:55:47,769:INFO:   <<< temperature_new: 1.0
+2024-11-23 06:55:47,769:INFO:   <<< text_num_hidden_layers: 12
+2024-11-23 06:55:47,769:INFO:   <<< time_embedding: 0
+2024-11-23 06:55:47,769:INFO:   <<< train_csv: data/.train.csv
+2024-11-23 06:55:47,769:INFO:   <<< train_frame_order: 0
+2024-11-23 06:55:47,769:INFO:   <<< use_mil: False
+2024-11-23 06:55:47,769:INFO:   <<< val_csv: data/.val.csv
+2024-11-23 06:55:47,769:INFO:   <<< video_dim: 1024
+2024-11-23 06:55:47,769:INFO:   <<< visual_num_hidden_layers: 12
+2024-11-23 06:55:47,769:INFO:   <<< warmup_proportion: 0.1
+2024-11-23 06:55:47,769:INFO:   <<< world_size: 4
+2024-11-23 06:55:47,884:INFO: device: cuda:0 n_gpu: 4
+2024-11-23 06:55:47,987:INFO: device: cuda:1 n_gpu: 4
+2024-11-23 06:55:47,998:INFO: device: cuda:3 n_gpu: 4
+2024-11-23 06:55:47,998:INFO: device: cuda:2 n_gpu: 4
+2024-11-23 06:55:48,820:INFO: loading archive file /home/zyl/sorted_mevtr/modules/cross-base
+2024-11-23 06:55:48,821:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2024-11-23 06:55:48,821:INFO: Weight doesn't exsits. /home/zyl/sorted_mevtr/modules/cross-base/cross_pytorch_model.bin
+2024-11-23 06:55:48,821:WARNING: Stage-One:True, Stage-Two:False
+2024-11-23 06:55:48,821:WARNING: Test retrieval by loose type.
+2024-11-23 06:55:48,821:WARNING: 	 embed_dim: 512
+2024-11-23 06:55:48,821:WARNING: 	 image_resolution: 224
+2024-11-23 06:55:48,821:WARNING: 	 vision_layers: 12
+2024-11-23 06:55:48,821:WARNING: 	 vision_width: 768
+2024-11-23 06:55:48,821:WARNING: 	 vision_patch_size: 32
+2024-11-23 06:55:48,822:WARNING: 	 context_length: 77
+2024-11-23 06:55:48,822:WARNING: 	 vocab_size: 49408
+2024-11-23 06:55:48,822:WARNING: 	 transformer_width: 512
+2024-11-23 06:55:48,822:WARNING: 	 transformer_heads: 8
+2024-11-23 06:55:48,822:WARNING: 	 transformer_layers: 12
+2024-11-23 06:55:48,822:WARNING: 		 linear_patch: 2d
+2024-11-23 06:55:48,822:WARNING: 	 cut_top_layer: 0
+2024-11-23 06:55:51,010:WARNING: 	 sim_header: meanP
+2024-11-23 06:55:55,694:INFO: --------------------
+2024-11-23 06:55:55,694:INFO: Weights from pretrained model not used in MeRetriever: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2024-11-23 06:55:57,153:INFO: ***** Running test *****
+2024-11-23 06:55:57,153:INFO:   Num examples = 1334
+2024-11-23 06:55:57,154:INFO:   Batch size = 16
+2024-11-23 06:55:57,154:INFO:   Num steps = 334
+2024-11-23 06:55:57,154:INFO: ***** Running val *****
+2024-11-23 06:55:57,154:INFO:   Num examples = 1334
+2024-11-23 06:56:01,548:INFO: ***** Running training *****
+2024-11-23 06:56:01,549:INFO:   Num examples = 5338
+2024-11-23 06:56:01,549:INFO:   Batch size = 16
+2024-11-23 06:56:01,549:INFO:   Num steps = 6660
+2024-11-23 07:18:49,954:INFO: Effective parameters:
+2024-11-23 07:18:49,954:INFO:   <<< adaptive_cls: 0
+2024-11-23 07:18:49,954:INFO:   <<< aggregation: None
+2024-11-23 07:18:49,954:INFO:   <<< alpha: 1.0
+2024-11-23 07:18:49,954:INFO:   <<< batch_size: 16
+2024-11-23 07:18:49,954:INFO:   <<< batch_size_val: 16
+2024-11-23 07:18:49,954:INFO:   <<< cache_dir: 
+2024-11-23 07:18:49,954:INFO:   <<< cluser_embed_from_clip: 1
+2024-11-23 07:18:49,954:INFO:   <<< cluster_algo: kmediods++
+2024-11-23 07:18:49,954:INFO:   <<< cluster_distance: euclidean
+2024-11-23 07:18:49,954:INFO:   <<< cluster_embedding: 0
+2024-11-23 07:18:49,954:INFO:   <<< cluster_frame_embedding: 0
+2024-11-23 07:18:49,954:INFO:   <<< cluster_iter_limit: 100
+2024-11-23 07:18:49,954:INFO:   <<< cluster_threshold: 1e-05
+2024-11-23 07:18:49,954:INFO:   <<< coef_lr: 0.0001
+2024-11-23 07:18:49,954:INFO:   <<< cross_model: cross-base
+2024-11-23 07:18:49,954:INFO:   <<< cross_num_hidden_layers: 4
+2024-11-23 07:18:49,955:INFO:   <<< data_path: /home/zyl/MeVTR_data_and_models/charades/annotation
+2024-11-23 07:18:49,955:INFO:   <<< datatype: charades
+2024-11-23 07:18:49,955:INFO:   <<< do_eval: False
+2024-11-23 07:18:49,955:INFO:   <<< do_lower_case: False
+2024-11-23 07:18:49,955:INFO:   <<< do_pretrain: False
+2024-11-23 07:18:49,955:INFO:   <<< do_train: True
+2024-11-23 07:18:49,955:INFO:   <<< dynamic_alpha: False
+2024-11-23 07:18:49,955:INFO:   <<< epochs: 20
+2024-11-23 07:18:49,955:INFO:   <<< eval_frame_order: 0
+2024-11-23 07:18:49,955:INFO:   <<< expand_msrvtt_sentences: False
+2024-11-23 07:18:49,955:INFO:   <<< feature_framerate: 1
+2024-11-23 07:18:49,955:INFO:   <<< features_path: /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3
+2024-11-23 07:18:49,955:INFO:   <<< fp16: False
+2024-11-23 07:18:49,955:INFO:   <<< fp16_opt_level: O1
+2024-11-23 07:18:49,955:INFO:   <<< freeze_layer_num: 0
+2024-11-23 07:18:49,955:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-23 07:18:49,955:INFO:   <<< hard_negative_rate: 0.5
+2024-11-23 07:18:49,955:INFO:   <<< init_model: None
+2024-11-23 07:18:49,955:INFO:   <<< linear_patch: 2d
+2024-11-23 07:18:49,955:INFO:   <<< local_rank: 0
+2024-11-23 07:18:49,955:INFO:   <<< loose_type: True
+2024-11-23 07:18:49,955:INFO:   <<< loss: balanced
+2024-11-23 07:18:49,955:INFO:   <<< lr: 0.0001
+2024-11-23 07:18:49,955:INFO:   <<< lr_decay: 0.9
+2024-11-23 07:18:49,955:INFO:   <<< margin: 0.1
+2024-11-23 07:18:49,955:INFO:   <<< max_frames: 64
+2024-11-23 07:18:49,956:INFO:   <<< max_words: 77
+2024-11-23 07:18:49,956:INFO:   <<< minkowski_norm_p: 2.0
+2024-11-23 07:18:49,956:INFO:   <<< n_display: 100
+2024-11-23 07:18:49,956:INFO:   <<< n_gpu: 1
+2024-11-23 07:18:49,956:INFO:   <<< n_pair: 1
+2024-11-23 07:18:49,956:INFO:   <<< negative_weighting: 1
+2024-11-23 07:18:49,956:INFO:   <<< num_thread_reader: 2
+2024-11-23 07:18:49,956:INFO:   <<< output_dir: /home/zyl/sorted_mevtr/output_debug
+2024-11-23 07:18:49,956:INFO:   <<< post_cluster_centroids: 16
+2024-11-23 07:18:49,956:INFO:   <<< post_process: cluster
+2024-11-23 07:18:49,956:INFO:   <<< pre_norm: 0
+2024-11-23 07:18:49,956:INFO:   <<< pretrained_clip_name: ViT-B/32
+2024-11-23 07:18:49,956:INFO:   <<< rank: 0
+2024-11-23 07:18:49,956:INFO:   <<< regularize: none
+2024-11-23 07:18:49,956:INFO:   <<< resume_model: None
+2024-11-23 07:18:49,956:INFO:   <<< sampled_use_mil: False
+2024-11-23 07:18:49,956:INFO:   <<< save_feature_path: None
+2024-11-23 07:18:49,956:INFO:   <<< seed: 42
+2024-11-23 07:18:49,956:INFO:   <<< sim_header: meanP
+2024-11-23 07:18:49,956:INFO:   <<< sim_lambda: 0.0
+2024-11-23 07:18:49,956:INFO:   <<< slice_framepos: 2
+2024-11-23 07:18:49,956:INFO:   <<< task_type: retrieval
+2024-11-23 07:18:49,956:INFO:   <<< temperature_new: 1.0
+2024-11-23 07:18:49,956:INFO:   <<< text_num_hidden_layers: 12
+2024-11-23 07:18:49,956:INFO:   <<< time_embedding: 0
+2024-11-23 07:18:49,956:INFO:   <<< train_csv: data/.train.csv
+2024-11-23 07:18:49,957:INFO:   <<< train_frame_order: 0
+2024-11-23 07:18:49,957:INFO:   <<< use_mil: False
+2024-11-23 07:18:49,957:INFO:   <<< val_csv: data/.val.csv
+2024-11-23 07:18:49,957:INFO:   <<< video_dim: 1024
+2024-11-23 07:18:49,957:INFO:   <<< visual_num_hidden_layers: 12
+2024-11-23 07:18:49,957:INFO:   <<< warmup_proportion: 0.1
+2024-11-23 07:18:49,957:INFO:   <<< world_size: 4
+2024-11-23 07:18:50,048:INFO: device: cuda:2 n_gpu: 4
+2024-11-23 07:18:50,063:INFO: device: cuda:1 n_gpu: 4
+2024-11-23 07:18:50,070:INFO: device: cuda:0 n_gpu: 4
+2024-11-23 07:18:50,102:INFO: device: cuda:3 n_gpu: 4
+2024-11-23 07:18:51,037:INFO: loading archive file /home/zyl/sorted_mevtr/modules/cross-base
+2024-11-23 07:18:51,038:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2024-11-23 07:18:51,038:INFO: Weight doesn't exsits. /home/zyl/sorted_mevtr/modules/cross-base/cross_pytorch_model.bin
+2024-11-23 07:18:51,038:WARNING: Stage-One:True, Stage-Two:False
+2024-11-23 07:18:51,038:WARNING: Test retrieval by loose type.
+2024-11-23 07:18:51,039:WARNING: 	 embed_dim: 512
+2024-11-23 07:18:51,039:WARNING: 	 image_resolution: 224
+2024-11-23 07:18:51,039:WARNING: 	 vision_layers: 12
+2024-11-23 07:18:51,039:WARNING: 	 vision_width: 768
+2024-11-23 07:18:51,039:WARNING: 	 vision_patch_size: 32
+2024-11-23 07:18:51,039:WARNING: 	 context_length: 77
+2024-11-23 07:18:51,039:WARNING: 	 vocab_size: 49408
+2024-11-23 07:18:51,039:WARNING: 	 transformer_width: 512
+2024-11-23 07:18:51,039:WARNING: 	 transformer_heads: 8
+2024-11-23 07:18:51,039:WARNING: 	 transformer_layers: 12
+2024-11-23 07:18:51,039:WARNING: 		 linear_patch: 2d
+2024-11-23 07:18:51,039:WARNING: 	 cut_top_layer: 0
+2024-11-23 07:18:53,251:WARNING: 	 sim_header: meanP
+2024-11-23 07:18:57,923:INFO: --------------------
+2024-11-23 07:18:57,924:INFO: Weights from pretrained model not used in MeRetriever: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2024-11-23 07:18:59,541:INFO: ***** Running test *****
+2024-11-23 07:18:59,541:INFO:   Num examples = 1334
+2024-11-23 07:18:59,541:INFO:   Batch size = 16
+2024-11-23 07:18:59,541:INFO:   Num steps = 334
+2024-11-23 07:18:59,541:INFO: ***** Running val *****
+2024-11-23 07:18:59,541:INFO:   Num examples = 1334
+2024-11-23 07:19:05,751:INFO: ***** Running training *****
+2024-11-23 07:19:05,751:INFO:   Num examples = 5338
+2024-11-23 07:19:05,751:INFO:   Batch size = 16
+2024-11-23 07:19:05,751:INFO:   Num steps = 6660
+2024-11-23 07:20:33,600:INFO: Effective parameters:
+2024-11-23 07:20:33,600:INFO:   <<< adaptive_cls: 0
+2024-11-23 07:20:33,600:INFO:   <<< aggregation: None
+2024-11-23 07:20:33,600:INFO:   <<< alpha: 1.0
+2024-11-23 07:20:33,600:INFO:   <<< batch_size: 16
+2024-11-23 07:20:33,600:INFO:   <<< batch_size_val: 16
+2024-11-23 07:20:33,600:INFO:   <<< cache_dir: 
+2024-11-23 07:20:33,600:INFO:   <<< cluser_embed_from_clip: 1
+2024-11-23 07:20:33,600:INFO:   <<< cluster_algo: kmediods++
+2024-11-23 07:20:33,600:INFO:   <<< cluster_distance: euclidean
+2024-11-23 07:20:33,600:INFO:   <<< cluster_embedding: 0
+2024-11-23 07:20:33,600:INFO:   <<< cluster_frame_embedding: 0
+2024-11-23 07:20:33,600:INFO:   <<< cluster_iter_limit: 100
+2024-11-23 07:20:33,600:INFO:   <<< cluster_threshold: 1e-05
+2024-11-23 07:20:33,600:INFO:   <<< coef_lr: 0.0001
+2024-11-23 07:20:33,600:INFO:   <<< cross_model: cross-base
+2024-11-23 07:20:33,600:INFO:   <<< cross_num_hidden_layers: 4
+2024-11-23 07:20:33,600:INFO:   <<< data_path: /home/zyl/MeVTR_data_and_models/charades/annotation
+2024-11-23 07:20:33,601:INFO:   <<< datatype: charades
+2024-11-23 07:20:33,601:INFO:   <<< do_eval: False
+2024-11-23 07:20:33,601:INFO:   <<< do_lower_case: False
+2024-11-23 07:20:33,601:INFO:   <<< do_pretrain: False
+2024-11-23 07:20:33,601:INFO:   <<< do_train: True
+2024-11-23 07:20:33,601:INFO:   <<< dynamic_alpha: False
+2024-11-23 07:20:33,601:INFO:   <<< epochs: 20
+2024-11-23 07:20:33,601:INFO:   <<< eval_frame_order: 0
+2024-11-23 07:20:33,601:INFO:   <<< expand_msrvtt_sentences: False
+2024-11-23 07:20:33,601:INFO:   <<< feature_framerate: 1
+2024-11-23 07:20:33,601:INFO:   <<< features_path: /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3
+2024-11-23 07:20:33,601:INFO:   <<< fp16: False
+2024-11-23 07:20:33,601:INFO:   <<< fp16_opt_level: O1
+2024-11-23 07:20:33,601:INFO:   <<< freeze_layer_num: 0
+2024-11-23 07:20:33,601:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-23 07:20:33,601:INFO:   <<< hard_negative_rate: 0.5
+2024-11-23 07:20:33,601:INFO:   <<< init_model: None
+2024-11-23 07:20:33,601:INFO:   <<< linear_patch: 2d
+2024-11-23 07:20:33,601:INFO:   <<< local_rank: 0
+2024-11-23 07:20:33,601:INFO:   <<< loose_type: True
+2024-11-23 07:20:33,601:INFO:   <<< loss: balanced
+2024-11-23 07:20:33,601:INFO:   <<< lr: 0.0001
+2024-11-23 07:20:33,601:INFO:   <<< lr_decay: 0.9
+2024-11-23 07:20:33,601:INFO:   <<< margin: 0.1
+2024-11-23 07:20:33,601:INFO:   <<< max_frames: 64
+2024-11-23 07:20:33,601:INFO:   <<< max_words: 77
+2024-11-23 07:20:33,601:INFO:   <<< minkowski_norm_p: 2.0
+2024-11-23 07:20:33,601:INFO:   <<< n_display: 100
+2024-11-23 07:20:33,601:INFO:   <<< n_gpu: 1
+2024-11-23 07:20:33,602:INFO:   <<< n_pair: 1
+2024-11-23 07:20:33,602:INFO:   <<< negative_weighting: 1
+2024-11-23 07:20:33,602:INFO:   <<< num_thread_reader: 2
+2024-11-23 07:20:33,602:INFO:   <<< output_dir: /home/zyl/sorted_mevtr/output_debug
+2024-11-23 07:20:33,602:INFO:   <<< post_cluster_centroids: 16
+2024-11-23 07:20:33,602:INFO:   <<< post_process: cluster
+2024-11-23 07:20:33,602:INFO:   <<< pre_norm: 0
+2024-11-23 07:20:33,602:INFO:   <<< pretrained_clip_name: ViT-B/32
+2024-11-23 07:20:33,602:INFO:   <<< rank: 0
+2024-11-23 07:20:33,602:INFO:   <<< regularize: none
+2024-11-23 07:20:33,602:INFO:   <<< resume_model: None
+2024-11-23 07:20:33,602:INFO:   <<< sampled_use_mil: False
+2024-11-23 07:20:33,602:INFO:   <<< save_feature_path: None
+2024-11-23 07:20:33,602:INFO:   <<< seed: 42
+2024-11-23 07:20:33,602:INFO:   <<< sim_header: meanP
+2024-11-23 07:20:33,602:INFO:   <<< sim_lambda: 0.0
+2024-11-23 07:20:33,602:INFO:   <<< slice_framepos: 2
+2024-11-23 07:20:33,602:INFO:   <<< task_type: retrieval
+2024-11-23 07:20:33,602:INFO:   <<< temperature_new: 1.0
+2024-11-23 07:20:33,602:INFO:   <<< text_num_hidden_layers: 12
+2024-11-23 07:20:33,602:INFO:   <<< time_embedding: 0
+2024-11-23 07:20:33,602:INFO:   <<< train_csv: data/.train.csv
+2024-11-23 07:20:33,602:INFO:   <<< train_frame_order: 0
+2024-11-23 07:20:33,602:INFO:   <<< use_mil: False
+2024-11-23 07:20:33,602:INFO:   <<< val_csv: data/.val.csv
+2024-11-23 07:20:33,602:INFO:   <<< video_dim: 1024
+2024-11-23 07:20:33,602:INFO:   <<< visual_num_hidden_layers: 12
+2024-11-23 07:20:33,602:INFO:   <<< warmup_proportion: 0.1
+2024-11-23 07:20:33,602:INFO:   <<< world_size: 4
+2024-11-23 07:20:33,717:INFO: device: cuda:0 n_gpu: 4
+2024-11-23 07:20:33,724:INFO: device: cuda:2 n_gpu: 4
+2024-11-23 07:20:33,731:INFO: device: cuda:1 n_gpu: 4
+2024-11-23 07:20:33,755:INFO: device: cuda:3 n_gpu: 4
+2024-11-23 07:20:34,750:INFO: loading archive file /home/zyl/sorted_mevtr/modules/cross-base
+2024-11-23 07:20:34,750:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2024-11-23 07:20:34,751:INFO: Weight doesn't exsits. /home/zyl/sorted_mevtr/modules/cross-base/cross_pytorch_model.bin
+2024-11-23 07:20:34,751:WARNING: Stage-One:True, Stage-Two:False
+2024-11-23 07:20:34,751:WARNING: Test retrieval by loose type.
+2024-11-23 07:20:34,751:WARNING: 	 embed_dim: 512
+2024-11-23 07:20:34,751:WARNING: 	 image_resolution: 224
+2024-11-23 07:20:34,751:WARNING: 	 vision_layers: 12
+2024-11-23 07:20:34,751:WARNING: 	 vision_width: 768
+2024-11-23 07:20:34,751:WARNING: 	 vision_patch_size: 32
+2024-11-23 07:20:34,751:WARNING: 	 context_length: 77
+2024-11-23 07:20:34,751:WARNING: 	 vocab_size: 49408
+2024-11-23 07:20:34,751:WARNING: 	 transformer_width: 512
+2024-11-23 07:20:34,751:WARNING: 	 transformer_heads: 8
+2024-11-23 07:20:34,751:WARNING: 	 transformer_layers: 12
+2024-11-23 07:20:34,751:WARNING: 		 linear_patch: 2d
+2024-11-23 07:20:34,752:WARNING: 	 cut_top_layer: 0
+2024-11-23 07:20:37,033:WARNING: 	 sim_header: meanP
+2024-11-23 07:20:41,740:INFO: --------------------
+2024-11-23 07:20:41,740:INFO: Weights from pretrained model not used in MeRetriever: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2024-11-23 07:20:43,310:INFO: ***** Running test *****
+2024-11-23 07:20:43,310:INFO:   Num examples = 1334
+2024-11-23 07:20:43,310:INFO:   Batch size = 16
+2024-11-23 07:20:43,310:INFO:   Num steps = 334
+2024-11-23 07:20:43,310:INFO: ***** Running val *****
+2024-11-23 07:20:43,310:INFO:   Num examples = 1334
+2024-11-23 07:20:47,220:INFO: ***** Running training *****
+2024-11-23 07:20:47,220:INFO:   Num examples = 5338
+2024-11-23 07:20:47,220:INFO:   Batch size = 16
+2024-11-23 07:20:47,220:INFO:   Num steps = 6660
+2024-11-23 07:54:30,261:INFO: Effective parameters:
+2024-11-23 07:54:30,261:INFO:   <<< adaptive_cls: 0
+2024-11-23 07:54:30,261:INFO:   <<< aggregation: None
+2024-11-23 07:54:30,261:INFO:   <<< alpha: 1.0
+2024-11-23 07:54:30,261:INFO:   <<< batch_size: 16
+2024-11-23 07:54:30,261:INFO:   <<< batch_size_val: 16
+2024-11-23 07:54:30,261:INFO:   <<< cache_dir: 
+2024-11-23 07:54:30,261:INFO:   <<< cluser_embed_from_clip: 1
+2024-11-23 07:54:30,261:INFO:   <<< cluster_algo: kmediods++
+2024-11-23 07:54:30,261:INFO:   <<< cluster_distance: euclidean
+2024-11-23 07:54:30,261:INFO:   <<< cluster_embedding: 0
+2024-11-23 07:54:30,261:INFO:   <<< cluster_frame_embedding: 0
+2024-11-23 07:54:30,261:INFO:   <<< cluster_iter_limit: 100
+2024-11-23 07:54:30,261:INFO:   <<< cluster_threshold: 1e-05
+2024-11-23 07:54:30,261:INFO:   <<< coef_lr: 0.0001
+2024-11-23 07:54:30,261:INFO:   <<< cross_model: cross-base
+2024-11-23 07:54:30,261:INFO:   <<< cross_num_hidden_layers: 4
+2024-11-23 07:54:30,261:INFO:   <<< data_path: /home/zyl/MeVTR_data_and_models/charades/annotation
+2024-11-23 07:54:30,262:INFO:   <<< datatype: charades
+2024-11-23 07:54:30,262:INFO:   <<< do_eval: False
+2024-11-23 07:54:30,262:INFO:   <<< do_lower_case: False
+2024-11-23 07:54:30,262:INFO:   <<< do_pretrain: False
+2024-11-23 07:54:30,262:INFO:   <<< do_train: True
+2024-11-23 07:54:30,262:INFO:   <<< dynamic_alpha: False
+2024-11-23 07:54:30,262:INFO:   <<< epochs: 20
+2024-11-23 07:54:30,262:INFO:   <<< eval_frame_order: 0
+2024-11-23 07:54:30,262:INFO:   <<< expand_msrvtt_sentences: False
+2024-11-23 07:54:30,262:INFO:   <<< feature_framerate: 1
+2024-11-23 07:54:30,262:INFO:   <<< features_path: /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3
+2024-11-23 07:54:30,262:INFO:   <<< fp16: False
+2024-11-23 07:54:30,262:INFO:   <<< fp16_opt_level: O1
+2024-11-23 07:54:30,262:INFO:   <<< freeze_layer_num: 0
+2024-11-23 07:54:30,262:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-23 07:54:30,262:INFO:   <<< hard_negative_rate: 0.5
+2024-11-23 07:54:30,262:INFO:   <<< init_model: None
+2024-11-23 07:54:30,262:INFO:   <<< linear_patch: 2d
+2024-11-23 07:54:30,262:INFO:   <<< local_rank: 0
+2024-11-23 07:54:30,262:INFO:   <<< loose_type: True
+2024-11-23 07:54:30,262:INFO:   <<< loss: balanced
+2024-11-23 07:54:30,262:INFO:   <<< lr: 0.0001
+2024-11-23 07:54:30,262:INFO:   <<< lr_decay: 0.9
+2024-11-23 07:54:30,262:INFO:   <<< margin: 0.1
+2024-11-23 07:54:30,262:INFO:   <<< max_frames: 64
+2024-11-23 07:54:30,262:INFO:   <<< max_words: 77
+2024-11-23 07:54:30,262:INFO:   <<< minkowski_norm_p: 2.0
+2024-11-23 07:54:30,262:INFO:   <<< n_display: 100
+2024-11-23 07:54:30,262:INFO:   <<< n_gpu: 1
+2024-11-23 07:54:30,263:INFO:   <<< n_pair: 1
+2024-11-23 07:54:30,263:INFO:   <<< negative_weighting: 1
+2024-11-23 07:54:30,263:INFO:   <<< num_thread_reader: 2
+2024-11-23 07:54:30,263:INFO:   <<< output_dir: /home/zyl/sorted_mevtr/output_debug
+2024-11-23 07:54:30,263:INFO:   <<< post_cluster_centroids: 16
+2024-11-23 07:54:30,263:INFO:   <<< post_process: cluster
+2024-11-23 07:54:30,263:INFO:   <<< pre_norm: 0
+2024-11-23 07:54:30,263:INFO:   <<< pretrained_clip_name: ViT-B/32
+2024-11-23 07:54:30,263:INFO:   <<< rank: 0
+2024-11-23 07:54:30,263:INFO:   <<< regularize: none
+2024-11-23 07:54:30,263:INFO:   <<< resume_model: None
+2024-11-23 07:54:30,263:INFO:   <<< sampled_use_mil: False
+2024-11-23 07:54:30,263:INFO:   <<< save_feature_path: None
+2024-11-23 07:54:30,263:INFO:   <<< seed: 42
+2024-11-23 07:54:30,263:INFO:   <<< sim_header: meanP
+2024-11-23 07:54:30,263:INFO:   <<< sim_lambda: 0.0
+2024-11-23 07:54:30,263:INFO:   <<< slice_framepos: 2
+2024-11-23 07:54:30,263:INFO:   <<< task_type: retrieval
+2024-11-23 07:54:30,263:INFO:   <<< temperature_new: 1.0
+2024-11-23 07:54:30,263:INFO:   <<< text_num_hidden_layers: 12
+2024-11-23 07:54:30,263:INFO:   <<< time_embedding: 0
+2024-11-23 07:54:30,263:INFO:   <<< train_csv: data/.train.csv
+2024-11-23 07:54:30,263:INFO:   <<< train_frame_order: 0
+2024-11-23 07:54:30,263:INFO:   <<< use_mil: False
+2024-11-23 07:54:30,263:INFO:   <<< val_csv: data/.val.csv
+2024-11-23 07:54:30,263:INFO:   <<< video_dim: 1024
+2024-11-23 07:54:30,263:INFO:   <<< visual_num_hidden_layers: 12
+2024-11-23 07:54:30,263:INFO:   <<< warmup_proportion: 0.1
+2024-11-23 07:54:30,263:INFO:   <<< world_size: 4
+2024-11-23 07:54:30,376:INFO: device: cuda:0 n_gpu: 4
+2024-11-23 07:54:30,484:INFO: device: cuda:2 n_gpu: 4
+2024-11-23 07:54:30,495:INFO: device: cuda:1 n_gpu: 4
+2024-11-23 07:54:30,516:INFO: device: cuda:3 n_gpu: 4
+2024-11-23 07:54:31,298:INFO: loading archive file /home/zyl/sorted_mevtr/modules/cross-base
+2024-11-23 07:54:31,299:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2024-11-23 07:54:31,299:INFO: Weight doesn't exsits. /home/zyl/sorted_mevtr/modules/cross-base/cross_pytorch_model.bin
+2024-11-23 07:54:31,299:WARNING: Stage-One:True, Stage-Two:False
+2024-11-23 07:54:31,299:WARNING: Test retrieval by loose type.
+2024-11-23 07:54:31,299:WARNING: 	 embed_dim: 512
+2024-11-23 07:54:31,300:WARNING: 	 image_resolution: 224
+2024-11-23 07:54:31,300:WARNING: 	 vision_layers: 12
+2024-11-23 07:54:31,300:WARNING: 	 vision_width: 768
+2024-11-23 07:54:31,300:WARNING: 	 vision_patch_size: 32
+2024-11-23 07:54:31,300:WARNING: 	 context_length: 77
+2024-11-23 07:54:31,300:WARNING: 	 vocab_size: 49408
+2024-11-23 07:54:31,300:WARNING: 	 transformer_width: 512
+2024-11-23 07:54:31,300:WARNING: 	 transformer_heads: 8
+2024-11-23 07:54:31,300:WARNING: 	 transformer_layers: 12
+2024-11-23 07:54:31,300:WARNING: 		 linear_patch: 2d
+2024-11-23 07:54:31,300:WARNING: 	 cut_top_layer: 0
+2024-11-23 07:54:33,474:WARNING: 	 sim_header: meanP
+2024-11-23 07:54:38,109:INFO: --------------------
+2024-11-23 07:54:38,109:INFO: Weights from pretrained model not used in MeRetriever: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2024-11-23 07:54:39,728:INFO: ***** Running test *****
+2024-11-23 07:54:39,728:INFO:   Num examples = 1334
+2024-11-23 07:54:39,728:INFO:   Batch size = 16
+2024-11-23 07:54:39,728:INFO:   Num steps = 334
+2024-11-23 07:54:39,728:INFO: ***** Running val *****
+2024-11-23 07:54:39,728:INFO:   Num examples = 1334
+2024-11-23 07:54:46,800:INFO: ***** Running training *****
+2024-11-23 07:54:46,800:INFO:   Num examples = 5338
+2024-11-23 07:54:46,800:INFO:   Batch size = 16
+2024-11-23 07:54:46,800:INFO:   Num steps = 6660
+2024-11-23 07:57:05,381:INFO: Effective parameters:
+2024-11-23 07:57:05,381:INFO:   <<< adaptive_cls: 0
+2024-11-23 07:57:05,381:INFO:   <<< aggregation: None
+2024-11-23 07:57:05,381:INFO:   <<< alpha: 1.0
+2024-11-23 07:57:05,381:INFO:   <<< batch_size: 16
+2024-11-23 07:57:05,381:INFO:   <<< batch_size_val: 16
+2024-11-23 07:57:05,381:INFO:   <<< cache_dir: 
+2024-11-23 07:57:05,381:INFO:   <<< cluser_embed_from_clip: 1
+2024-11-23 07:57:05,381:INFO:   <<< cluster_algo: kmediods++
+2024-11-23 07:57:05,381:INFO:   <<< cluster_distance: euclidean
+2024-11-23 07:57:05,381:INFO:   <<< cluster_embedding: 0
+2024-11-23 07:57:05,381:INFO:   <<< cluster_frame_embedding: 0
+2024-11-23 07:57:05,381:INFO:   <<< cluster_iter_limit: 100
+2024-11-23 07:57:05,381:INFO:   <<< cluster_threshold: 1e-05
+2024-11-23 07:57:05,381:INFO:   <<< coef_lr: 0.0001
+2024-11-23 07:57:05,381:INFO:   <<< cross_model: cross-base
+2024-11-23 07:57:05,381:INFO:   <<< cross_num_hidden_layers: 4
+2024-11-23 07:57:05,382:INFO:   <<< data_path: /home/zyl/MeVTR_data_and_models/charades/annotation
+2024-11-23 07:57:05,382:INFO:   <<< datatype: charades
+2024-11-23 07:57:05,382:INFO:   <<< do_eval: False
+2024-11-23 07:57:05,382:INFO:   <<< do_lower_case: False
+2024-11-23 07:57:05,382:INFO:   <<< do_pretrain: False
+2024-11-23 07:57:05,382:INFO:   <<< do_train: True
+2024-11-23 07:57:05,382:INFO:   <<< dynamic_alpha: False
+2024-11-23 07:57:05,382:INFO:   <<< epochs: 20
+2024-11-23 07:57:05,382:INFO:   <<< eval_frame_order: 0
+2024-11-23 07:57:05,382:INFO:   <<< expand_msrvtt_sentences: False
+2024-11-23 07:57:05,382:INFO:   <<< feature_framerate: 1
+2024-11-23 07:57:05,382:INFO:   <<< features_path: /home/zyl/MeVTR_data_and_models/charades/Charades_v2_3
+2024-11-23 07:57:05,382:INFO:   <<< fp16: False
+2024-11-23 07:57:05,382:INFO:   <<< fp16_opt_level: O1
+2024-11-23 07:57:05,382:INFO:   <<< freeze_layer_num: 0
+2024-11-23 07:57:05,382:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-23 07:57:05,382:INFO:   <<< hard_negative_rate: 0.5
+2024-11-23 07:57:05,382:INFO:   <<< init_model: None
+2024-11-23 07:57:05,382:INFO:   <<< linear_patch: 2d
+2024-11-23 07:57:05,382:INFO:   <<< local_rank: 0
+2024-11-23 07:57:05,382:INFO:   <<< loose_type: True
+2024-11-23 07:57:05,382:INFO:   <<< loss: balanced
+2024-11-23 07:57:05,382:INFO:   <<< lr: 0.0001
+2024-11-23 07:57:05,382:INFO:   <<< lr_decay: 0.9
+2024-11-23 07:57:05,382:INFO:   <<< margin: 0.1
+2024-11-23 07:57:05,382:INFO:   <<< max_frames: 64
+2024-11-23 07:57:05,382:INFO:   <<< max_words: 77
+2024-11-23 07:57:05,382:INFO:   <<< minkowski_norm_p: 2.0
+2024-11-23 07:57:05,382:INFO:   <<< n_display: 100
+2024-11-23 07:57:05,383:INFO:   <<< n_gpu: 1
+2024-11-23 07:57:05,383:INFO:   <<< n_pair: 1
+2024-11-23 07:57:05,383:INFO:   <<< negative_weighting: 1
+2024-11-23 07:57:05,383:INFO:   <<< num_thread_reader: 2
+2024-11-23 07:57:05,383:INFO:   <<< output_dir: /home/zyl/sorted_mevtr/output_debug
+2024-11-23 07:57:05,383:INFO:   <<< post_cluster_centroids: 16
+2024-11-23 07:57:05,383:INFO:   <<< post_process: cluster
+2024-11-23 07:57:05,383:INFO:   <<< pre_norm: 0
+2024-11-23 07:57:05,383:INFO:   <<< pretrained_clip_name: ViT-B/32
+2024-11-23 07:57:05,383:INFO:   <<< rank: 0
+2024-11-23 07:57:05,383:INFO:   <<< regularize: none
+2024-11-23 07:57:05,383:INFO:   <<< resume_model: None
+2024-11-23 07:57:05,383:INFO:   <<< sampled_use_mil: False
+2024-11-23 07:57:05,383:INFO:   <<< save_feature_path: None
+2024-11-23 07:57:05,383:INFO:   <<< seed: 42
+2024-11-23 07:57:05,383:INFO:   <<< sim_header: meanP
+2024-11-23 07:57:05,383:INFO:   <<< sim_lambda: 0.0
+2024-11-23 07:57:05,383:INFO:   <<< slice_framepos: 2
+2024-11-23 07:57:05,383:INFO:   <<< task_type: retrieval
+2024-11-23 07:57:05,383:INFO:   <<< temperature_new: 1.0
+2024-11-23 07:57:05,383:INFO:   <<< text_num_hidden_layers: 12
+2024-11-23 07:57:05,383:INFO:   <<< time_embedding: 0
+2024-11-23 07:57:05,383:INFO:   <<< train_csv: data/.train.csv
+2024-11-23 07:57:05,383:INFO:   <<< train_frame_order: 0
+2024-11-23 07:57:05,383:INFO:   <<< use_mil: False
+2024-11-23 07:57:05,383:INFO:   <<< val_csv: data/.val.csv
+2024-11-23 07:57:05,383:INFO:   <<< video_dim: 1024
+2024-11-23 07:57:05,383:INFO:   <<< visual_num_hidden_layers: 12
+2024-11-23 07:57:05,383:INFO:   <<< warmup_proportion: 0.1
+2024-11-23 07:57:05,383:INFO:   <<< world_size: 4
+2024-11-23 07:57:05,487:INFO: device: cuda:3 n_gpu: 4
+2024-11-23 07:57:05,499:INFO: device: cuda:2 n_gpu: 4
+2024-11-23 07:57:05,510:INFO: device: cuda:0 n_gpu: 4
+2024-11-23 07:57:05,613:INFO: device: cuda:1 n_gpu: 4
+2024-11-23 07:57:06,521:INFO: loading archive file /home/zyl/sorted_mevtr/modules/cross-base
+2024-11-23 07:57:06,522:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 512,
+  "initializer_range": 0.02,
+  "intermediate_size": 2048,
+  "max_position_embeddings": 128,
+  "num_attention_heads": 8,
+  "num_hidden_layers": 4,
+  "type_vocab_size": 2,
+  "vocab_size": 512
+}
+
+2024-11-23 07:57:06,522:INFO: Weight doesn't exsits. /home/zyl/sorted_mevtr/modules/cross-base/cross_pytorch_model.bin
+2024-11-23 07:57:06,523:WARNING: Stage-One:True, Stage-Two:False
+2024-11-23 07:57:06,523:WARNING: Test retrieval by loose type.
+2024-11-23 07:57:06,523:WARNING: 	 embed_dim: 512
+2024-11-23 07:57:06,523:WARNING: 	 image_resolution: 224
+2024-11-23 07:57:06,523:WARNING: 	 vision_layers: 12
+2024-11-23 07:57:06,523:WARNING: 	 vision_width: 768
+2024-11-23 07:57:06,523:WARNING: 	 vision_patch_size: 32
+2024-11-23 07:57:06,524:WARNING: 	 context_length: 77
+2024-11-23 07:57:06,524:WARNING: 	 vocab_size: 49408
+2024-11-23 07:57:06,524:WARNING: 	 transformer_width: 512
+2024-11-23 07:57:06,524:WARNING: 	 transformer_heads: 8
+2024-11-23 07:57:06,524:WARNING: 	 transformer_layers: 12
+2024-11-23 07:57:06,524:WARNING: 		 linear_patch: 2d
+2024-11-23 07:57:06,524:WARNING: 	 cut_top_layer: 0
+2024-11-23 07:57:08,750:WARNING: 	 sim_header: meanP
+2024-11-23 07:57:13,878:INFO: --------------------
+2024-11-23 07:57:13,879:INFO: Weights from pretrained model not used in MeRetriever: 
+   clip.input_resolution
+   clip.context_length
+   clip.vocab_size
+2024-11-23 07:57:15,382:INFO: ***** Running test *****
+2024-11-23 07:57:15,382:INFO:   Num examples = 1334
+2024-11-23 07:57:15,382:INFO:   Batch size = 16
+2024-11-23 07:57:15,382:INFO:   Num steps = 334
+2024-11-23 07:57:15,382:INFO: ***** Running val *****
+2024-11-23 07:57:15,382:INFO:   Num examples = 1334
+2024-11-23 07:57:19,170:INFO: ***** Running training *****
+2024-11-23 07:57:19,171:INFO:   Num examples = 5338
+2024-11-23 07:57:19,171:INFO:   Batch size = 16
+2024-11-23 07:57:19,171:INFO:   Num steps = 6660
